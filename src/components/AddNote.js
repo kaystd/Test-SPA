@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Menu from './Menu'
+import Menu from './Menu';
 
 class AddNote extends Component {
   render() {

@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 
 import Menu from './Menu';
 
-class Settings extends Component {
+class Main extends Component {
   render() {
     return (
       <div>
         <Menu />
-        Settings
+        Welcome
       </div>
     )
   }
 }
 
-export default Settings;
+export default Main;
