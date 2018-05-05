@@ -4,42 +4,16 @@ import { Router, Route, hashHistory } from 'react-router';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import Main from './components/Main'
-import ListOfEmployees from './components/ListOfEmployees'
-import AddNote from './components/AddNote'
-import Settings from './components/Settings'
+import Main from './components/Main';
+import ListOfEmployees from './components/ListOfEmployees';
+import AddNote from './components/AddNote';
+import Settings from './components/Settings';
+import List from './List';
 
-const initialState = [
-  {
-    secondName: 'Ivanov',
-    firstName: 'Ivan',
-    middleName: 'Ivanovich',
-    personnelNumber: 1,
-    age: 32,
-    position: 'Senior software engineer',
-    unit: 'Development departament'
-  },
-  {
-    secondName: 'Petrov',
-    firstName: 'Vladimir',
-    middleName: 'Alexandrovich',
-    personnelNumber: 2,
-    age: 29,
-    position: 'Middle software engineer',
-    unit: 'Development departament'
-  },
-  {
-    secondName: 'Johnson',
-    firstName: 'John',
-    middleName: 'Winston',
-    personnelNumber: 3,
-    age: 25,
-    position: 'Junior software engineer',
-    unit: 'Development departament'
-  }
-];
+const initialState = List;
 
-function employeesList(state = initialState) {
+function employeesList(state = initialState, action) {
+  console.log(state);
   return state;
 }
 
