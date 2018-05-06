@@ -13,8 +13,8 @@ class ListOfEmployees extends Component {
   }
 
   render() {
-    //console.log(this.state);
-    //console.log(this.props);
+    console.log(this.state);
+    console.log(this.props);
 
     return (
       <div>
@@ -22,7 +22,7 @@ class ListOfEmployees extends Component {
         List of employees
         <div>
           <ul>
-            {this.props.employees.map((employee, number) =>
+            {this.props.employees.addEmployee.map((employee, number) =>
               <li onClick = {this.handleClick.bind(this, employee.personnelNumber)} key={number}>
                 {`${employee.secondName} - ${employee.position}`}
               </li>
@@ -30,7 +30,7 @@ class ListOfEmployees extends Component {
           </ul>
         </div>
         <div>
-          {this.props.employees.map((employee, number) =>
+          {this.props.employees.addEmployee.map((employee, number) =>
             this.state.openEmployeeId === employee.personnelNumber &&
             <div key={number}>
               {`${employee.secondName}`}<br />

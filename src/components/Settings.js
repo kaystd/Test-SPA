@@ -8,6 +8,9 @@ class Settings extends Component {
       <div>
         <Menu />
         Settings
+        <div>
+          
+        </div>
       </div>
     )
   }

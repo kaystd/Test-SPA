@@ -3,26 +3,21 @@ import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 import Main from './components/Main';
 import ListOfEmployees from './components/ListOfEmployees';
 import AddNote from './components/AddNote';
 import Settings from './components/Settings';
-import List from './List';
+import reducer from './components/reducers'
 
-const initialState = List;
-
-function employeesList(state = initialState, action) {
-  console.log(state);
-  return state;
-}
-
-const store = createStore(employeesList, window.__REDUX_DEVTOOLS_EXTENSION__ &&
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ &&
    window.__REDUX_DEVTOOLS_EXTENSION__());
+const history = syncHistoryWithStore(hashHistory, store);
 
 ReactDOM.render (
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <Router history={history}>
       <Route exact path='/' component={Main} />
       <Route path='/employees-list' component={ListOfEmployees} />
       <Route path='/add-note' component={AddNote} />
