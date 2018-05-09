@@ -7,7 +7,7 @@ class Main extends Component {
     return (
       <div>
         <Menu />
-        Welcome
+        <h1 className="display-3">Welcome</h1>
       </div>
     )
   }

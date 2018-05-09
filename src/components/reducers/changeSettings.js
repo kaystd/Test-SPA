@@ -1,4 +1,4 @@
-import Items from '../Items';
+import Items from '../data/Items';
 
 const initialState = Items;
 

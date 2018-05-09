@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import Menu from './Menu';
+import '../style.css'
 
 class AddNote extends Component {
   addEmployee() {
@@ -25,47 +26,61 @@ class AddNote extends Component {
   }
 
   render() {
+    const style = {
+      margin:'10px'
+    }
     return (
       <div>
         <Menu />
-        Add note
-        <div>
+        <h1 className="headers__h1">Add note</h1>
+        <div className="form-group">
           <input
+            className="form-control"
             type="text"
             placeholder="Input second name"
             ref={(input) => {this.secondName = input}}>
           </input>
           <input
+            className="form-control"
             type="text"
             placeholder="Input first name"
             ref={(input) => {this.firstName = input}}>
           </input>
           <input
+            className="form-control"
             type="text"
             placeholder="Input middle name"
             ref={(input) => {this.middleName = input}}>
           </input>
           <input
+            className="form-control"
             type="text"
             placeholder="Input personnel number"
             ref={(input) => {this.personnelNumber = input}}></input>
           <input
+            className="form-control"
             type="text"
             placeholder="Input age"
             ref={(input) => {this.age = input}}></input>
           <input
+            className="form-control"
             type="text"
             placeholder="Input position"
             ref={(input) => {this.position = input}}></input>
           <input
+            className="form-control"
             type="text"
             placeholder="Input unit"
             ref={(input) => {this.unit = input}}></input>
           <button
+            style={style}
+            className="btn btn-primary"
             onClick={this.addEmployee.bind(this)}>Save and add else
           </button>
           <Link to='/employees-list'>
             <button
+              className="btn btn-primary"
+              style={style}
               onClick={this.addEmployee.bind(this)}>Save and return to list
             </button>
           </Link>

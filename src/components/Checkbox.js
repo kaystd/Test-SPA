@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { connect } from 'react-redux';
 
 class Checkbox extends Component {
 
@@ -21,21 +20,18 @@ class Checkbox extends Component {
 
 
   render() {
-    //this.props.label[1] = this.state.isChecked;
-    //console.log('props:', this.props);
-    //console.log('state:', this.state.isChecked);
 
     const { label } = this.props;
     const { isChecked } = this.state;
 
     return (
-      <div>
+      <div className="custom-checkbox list-group-item">
         <label>
           <input
-          type="checkbox"
-          value={label}
-          checked={isChecked}
-          onChange={this.toggleCheckBoxChange}
+            type="checkbox"
+            value={label}
+            checked={isChecked}
+            onChange={this.toggleCheckBoxChange}
           />
           {label}
         </label>
@@ -45,16 +41,3 @@ class Checkbox extends Component {
 }
 
 export default Checkbox;
-// export default connect(
-//   state => ({
-//     settings: state
-//   }),
-//   dispatch => ({
-//     onChangeSettings: (label) => {
-//       const payload = {
-//         label: [label, this.state.isChecked]
-//       }
-//       dispatch({ type: 'CHANGE_SETTINGS', payload })
-//     }
-//   })
-// )(Checkbox);

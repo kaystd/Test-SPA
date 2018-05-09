@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Menu from './Menu';
+import '../style.css'
 
 class ListOfEmployees extends Component {
 
@@ -10,25 +11,28 @@ class ListOfEmployees extends Component {
   };
 
   render() {
-    console.log('props', this.props);
+    const style = {width:'500px', display:'inline-table'};
     const visibility = this.props.employees.changeSettings;
     return (
       <div>
         <Menu />
-        List of employees
-        <div>
+        <h1 className="headers__h1">List of employees</h1>
+        <div className="employees-min-list list-group" style={style}>
           <ul>
             {this.props.employees.addEmployee.map((employee, number) =>
-              <li onClick = {this.handleClick.bind(this, employee.personnelNumber)} key={number}>
+              <li
+                className="list-group-item employees-list__li"
+                onClick={this.handleClick.bind(this, employee.personnelNumber)}
+                key={number}>
                 {`${employee.secondName} - ${employee.position}`}
               </li>
             )}
           </ul>
         </div>
-        <div>
+        <div className="list-group" style={style}>
           {this.props.employees.addEmployee.map((employee, number) =>
             this.state.openEmployeeId === employee.personnelNumber &&
-            <div key={number}>
+            <div className="list-group-item" key={number}>
               <div>{visibility.secondName[1] && employee.secondName}</div>
               <div>{visibility.firstName[1] && employee.firstName}</div>
               <div>{visibility.middleName[1] && employee.middleName}</div>
