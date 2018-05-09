@@ -5,17 +5,13 @@ import Menu from './Menu';
 
 class ListOfEmployees extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      openEmployeeId: null
-    };
-  }
+  state = {
+    openEmployeeId: null
+  };
 
   render() {
-    console.log(this.state);
-    console.log(this.props);
-
+    console.log('props', this.props);
+    const visibility = this.props.employees.changeSettings;
     return (
       <div>
         <Menu />
@@ -33,13 +29,13 @@ class ListOfEmployees extends Component {
           {this.props.employees.addEmployee.map((employee, number) =>
             this.state.openEmployeeId === employee.personnelNumber &&
             <div key={number}>
-              {`${employee.secondName}`}<br />
-              {`${employee.firstName}`}<br />
-              {`${employee.middleName}`}<br />
-              {`${employee.personnelNumber}`}<br />
-              {`${employee.age}`}<br />
-              {`${employee.position}`}<br />
-              {`${employee.unit}`}<br />
+              <div>{visibility.secondName[1] && employee.secondName}</div>
+              <div>{visibility.firstName[1] && employee.firstName}</div>
+              <div>{visibility.middleName[1] && employee.middleName}</div>
+              <div>{visibility.personnelNumber[1] && employee.personnelNumber}</div>
+              <div>{visibility.age[1] && employee.age}</div>
+              <div>{visibility.position[1] && employee.position}</div>
+              <div>{visibility.unit[1] && employee.unit}</div>
             </div>
           )}
         </div>
