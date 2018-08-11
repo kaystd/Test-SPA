@@ -12,3 +12,6 @@
 .headers__h1 {
   margin-left: 30px;
 }
+.errors {
+  color: red;
+}

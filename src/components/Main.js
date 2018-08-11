@@ -5,9 +5,9 @@ import Menu from './Menu';
 class Main extends Component {
   render() {
     return (
-      <div>
+      <div className="">
         <Menu />
-        <h1 className="display-3">Welcome</h1>
+        <h1 className="">Welcome</h1>
       </div>
     )
   }

@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import createHistory from "history/createHashHistory";
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-// import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import Main from './components/Main';
 import ListOfEmployees from './components/ListOfEmployees';
@@ -23,12 +23,12 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, routing))
 );
 
-const style ={width:'400px', padding: '10px', margin:'auto'};
+// const style ={width:'400px', padding: '10px', margin:'auto'};
 
 ReactDOM.render (
   <Provider store={store}>
-    <ConnectedRouter history={history} className="" style={style}>
-      <div>
+    <ConnectedRouter history={history} className="" /*style={style}*/>
+      <div className="container">
         <Route exact path='/' component={Main} />
         <Route path='/employees-list' component={ListOfEmployees} />
         <Route path='/add-note' component={AddNote} />
@@ -37,4 +37,4 @@ ReactDOM.render (
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
-)
+);

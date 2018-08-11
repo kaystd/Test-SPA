@@ -11,18 +11,17 @@ class ListOfEmployees extends Component {
   };
 
   render() {
-    console.log(this.props)
-    // const style = {width:'500px', display:'inline-table'};
+    const style = {width:'500 px', display:'inline-table'};
     const visibility = this.props.employees.forms.settings;
 
     const fields = [];
-    this.props.employees.addEmployee.find((employee) =>
+    this.props.employees.employeesList.find((employee) =>
       employee.personnelNumber === this.state.openEmployeeId &&
       Object.entries(employee).filter((element) =>
         element && visibility[element[0]].visible
       ).map((element, index) =>
         fields.push(
-          <div key={index}>
+          <div className="list-group-item" key={index}>
             {visibility[element[0]].label}: {element[1]}
           </div>
         )
@@ -33,11 +32,11 @@ class ListOfEmployees extends Component {
       <div>
         {<Menu />}
         <h1 className="">List of employees</h1>
-        <div className="" /*style={style}*/>
-          <ul>
-            {this.props.employees.addEmployee.map((employee) =>
+        <div className="card" style={style}>
+          <ul className="list-group">
+            {this.props.employees.employeesList.map((employee) =>
               <li
-                className=""
+                className="list-group-item employees-list__li"
                 onClick={this.handleClick(employee.personnelNumber)}
                 key={employee.personnelNumber}
               >
@@ -47,7 +46,7 @@ class ListOfEmployees extends Component {
           </ul>
         </div>
 
-        <div className="" /*style={style}*/>
+        <div className="list-group" style={style}>
           {fields}
         </div>
       </div>

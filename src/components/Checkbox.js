@@ -12,13 +12,14 @@ class Checkbox extends Component {
     const { model, label } = this.props;
      // console.log('model!!!',model)
     return (
-      <div className="">
-        <label>
+      <div className="form-check">
+        <label className="form-check-label">
           <Control.checkbox
+            className="form-check-input"
             model={`.${model}`}
             changeAction={model => this.handleCheckboxChange(model)}
           />
-          {label}
+          Show: {label}
         </label>
       </div>
     )
