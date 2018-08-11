@@ -1,37 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Control } from 'react-redux-form';
 
 class Checkbox extends Component {
-
-  state = {
-    isChecked: this.props.label[1]
+  handleCheckboxChange(model) {
+    // console.log(this.props)
+    this.props.toggleCheckbox(model)
   }
-
-  toggleCheckBoxChange = () => {
-    const { handleCheckboxChange, label } = this.props;
-
-    this.setState(({ isChecked }) => (
-      {
-        isChecked: !isChecked
-      }
-    ));
-
-    handleCheckboxChange(label);
-  }
-
 
   render() {
-
-    const { label } = this.props;
-    const { isChecked } = this.state;
-
+    const { model, label } = this.props;
+     // console.log('model!!!',model)
     return (
-      <div className="custom-checkbox list-group-item">
+      <div className="">
         <label>
-          <input
-            type="checkbox"
-            value={label}
-            checked={isChecked}
-            onChange={this.toggleCheckBoxChange}
+          <Control.checkbox
+            model={`.${model}`}
+            changeAction={model => this.handleCheckboxChange(model)}
           />
           {label}
         </label>
@@ -40,4 +25,8 @@ class Checkbox extends Component {
   }
 }
 
-export default Checkbox;
+export default connect(
+  state => ({
+    settings: state
+  }),
+)(Checkbox);

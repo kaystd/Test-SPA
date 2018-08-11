@@ -11,44 +11,51 @@ class ListOfEmployees extends Component {
   };
 
   render() {
-    const style = {width:'500px', display:'inline-table'};
-    const visibility = this.props.employees.changeSettings;
+    console.log(this.props)
+    // const style = {width:'500px', display:'inline-table'};
+    const visibility = this.props.employees.forms.settings;
+
+    const fields = [];
+    this.props.employees.addEmployee.find((employee) =>
+      employee.personnelNumber === this.state.openEmployeeId &&
+      Object.entries(employee).filter((element) =>
+        element && visibility[element[0]].visible
+      ).map((element, index) =>
+        fields.push(
+          <div key={index}>
+            {visibility[element[0]].label}: {element[1]}
+          </div>
+        )
+      )
+    );
+
     return (
       <div>
-        <Menu />
-        <h1 className="headers__h1">List of employees</h1>
-        <div className="employees-min-list list-group" style={style}>
+        {<Menu />}
+        <h1 className="">List of employees</h1>
+        <div className="" /*style={style}*/>
           <ul>
-            {this.props.employees.addEmployee.map((employee, number) =>
+            {this.props.employees.addEmployee.map((employee) =>
               <li
-                className="list-group-item employees-list__li"
-                onClick={this.handleClick.bind(this, employee.personnelNumber)}
-                key={number}>
+                className=""
+                onClick={this.handleClick(employee.personnelNumber)}
+                key={employee.personnelNumber}
+              >
                 {`${employee.secondName} - ${employee.position}`}
               </li>
             )}
           </ul>
         </div>
-        <div className="list-group" style={style}>
-          {this.props.employees.addEmployee.map((employee, number) =>
-            this.state.openEmployeeId === employee.personnelNumber &&
-            <div className="list-group-item" key={number}>
-              <div>{visibility.secondName[1] && employee.secondName}</div>
-              <div>{visibility.firstName[1] && employee.firstName}</div>
-              <div>{visibility.middleName[1] && employee.middleName}</div>
-              <div>{visibility.personnelNumber[1] && employee.personnelNumber}</div>
-              <div>{visibility.age[1] && employee.age}</div>
-              <div>{visibility.position[1] && employee.position}</div>
-              <div>{visibility.unit[1] && employee.unit}</div>
-            </div>
-          )}
+
+        <div className="" /*style={style}*/>
+          {fields}
         </div>
       </div>
     )
   }
 
-  handleClick = openEmployeeId => this.setState({
-    openEmployeeId: this.state.openEmployeeId === openEmployeeId ? null : openEmployeeId
+  handleClick = (personnelNumber) => () => this.setState({
+    openEmployeeId: this.state.openEmployeeId === personnelNumber ? null : personnelNumber
   })
 }
 

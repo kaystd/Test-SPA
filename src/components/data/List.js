@@ -6,7 +6,7 @@ export default [
     personnelNumber: 1,
     age: 32,
     position: 'Senior software engineer',
-    unit: 'Development departament'
+    unit: 'Development department'
   },
   {
     secondName: 'Petrov',
@@ -15,7 +15,7 @@ export default [
     personnelNumber: 2,
     age: 29,
     position: 'Middle software engineer',
-    unit: 'Development departament'
+    unit: 'Development department'
   },
   {
     secondName: 'Johnson',
@@ -24,6 +24,6 @@ export default [
     personnelNumber: 3,
     age: 25,
     position: 'Junior software engineer',
-    unit: 'Development departament'
+    unit: 'Development department'
   }
 ];

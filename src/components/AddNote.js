@@ -1,90 +1,90 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Control, Form, Errors, actions } from 'react-redux-form';
 
 import Menu from './Menu';
 import '../style.css'
 
 class AddNote extends Component {
-  addEmployee() {
-    this.props.onAddEmployee(
-      this.secondName.value,
-      this.firstName.value,
-      this.middleName.value,
-      this.personnelNumber.value,
-      this.age.value,
-      this.position.value,
-      this.unit.value
-    );
-    this.secondName.value = '';
-    this.firstName.value = '';
-    this.middleName.value = '';
-    this.personnelNumber.value = '';
-    this.age.value = '';
-    this.position.value = '';
-    this.unit.value = '';
+  addEmployee(employee) {
+    this.props.onAddEmployee(employee);
   }
 
   render() {
-    const style = {
-      margin:'10px'
-    }
+    console.log(this.props);
+
     return (
       <div>
         <Menu />
-        <h1 className="headers__h1">Add note</h1>
-        <div className="form-group">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Input second name"
-            ref={(input) => {this.secondName = input}}>
-          </input>
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Input first name"
-            ref={(input) => {this.firstName = input}}>
-          </input>
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Input middle name"
-            ref={(input) => {this.middleName = input}}>
-          </input>
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Input personnel number"
-            ref={(input) => {this.personnelNumber = input}}></input>
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Input age"
-            ref={(input) => {this.age = input}}></input>
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Input position"
-            ref={(input) => {this.position = input}}></input>
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Input unit"
-            ref={(input) => {this.unit = input}}></input>
-          <button
-            style={style}
-            className="btn btn-primary"
-            onClick={this.addEmployee.bind(this)}>Save and add else
+        <h1 className="">Add note</h1>
+        <Form
+          model="forms.employee"
+          onSubmit={employee => this.addEmployee(employee)}
+        >
+          <label >Second name</label>
+          <Control.text
+            model=".secondName"
+            placeholder="Second name"
+            required
+            validateOn="blur"
+          />
+          <Errors
+            className=""
+            model=".secondName"
+            show="touched"
+            messages={{
+              valueMissing: 'Second name is required',
+            }}
+          />
+
+          <label >First name</label>
+          <Control.text model=".firstName" placeholder="First name" />
+
+          <label >Middle name</label>
+          <Control.text model=".middleName" placeholder="Middle name" />
+
+          <label >Personnel number</label>
+          <Control.text
+            model=".personnelNumber"
+            placeholder="Personnel number"
+            required
+            validateOn="blur"
+          />
+          <Errors
+            className=""
+            model=".personnelNumber"
+            show="touched"
+            messages={{
+              valueMissing: 'Personnel number is required',
+            }}
+          />
+
+          <label >Age</label>
+          <Control.text model=".age" placeholder="Age" />
+
+          <label >Position</label>
+          <Control.text
+            model=".position"
+            placeholder="Position"
+            required
+            validateOn="blur"
+          />
+          <Errors
+            className=""
+            model=".position"
+            show="touched"
+            messages={{
+              valueMissing: 'Position is required',
+            }}
+          />
+
+          <label >Unit</label>
+          <Control.text model=".unit" placeholder="Unit" />
+
+          <button type="submit">
+            Ok
           </button>
-          <Link to='/employees-list'>
-            <button
-              className="btn btn-primary"
-              style={style}
-              onClick={this.addEmployee.bind(this)}>Save and return to list
-            </button>
-          </Link>
-        </div>
+        </Form>
       </div>
     )
   }
@@ -92,21 +92,15 @@ class AddNote extends Component {
 
 export default connect(
   state => ({
-    employees: state
+      employees: state
   }),
   dispatch => ({
-    onAddEmployee: (secondName, firstName, middleName, personnelNumber,
-    age, position, unit) => {
+    onAddEmployee: (employee) => {
       const payload = {
-        secondName,
-        firstName,
-        middleName,
-        personnelNumber,
-        age,
-        position,
-        unit
-      }
-      dispatch({ type: 'ADD_EMPLOYEE', payload })
+        ...employee
+      };
+      dispatch({ type: 'ADD_EMPLOYEE', payload });
+      dispatch(actions.reset('forms.employee'));
     }
   })
 )(AddNote);

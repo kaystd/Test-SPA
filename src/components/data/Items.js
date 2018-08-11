@@ -1,9 +1,30 @@
 export default {
-  secondName: ['Second name', true],
-  firstName: ['First Name', true],
-  middleName: ['Middle name', true],
-  personnelNumber: ['Personnel number', true],
-  age: ['Age', true],
-  position: ['Position', true],
-  unit: ['Unit', true]
+  secondName: {
+    label:'Second name',
+    visible: true
+  },
+  firstName: {
+    label: 'First name',
+    visible: true
+  },
+  middleName: {
+    label: 'Middle name',
+    visible: true
+  },
+  personnelNumber: {
+    label: 'Personnel number',
+    visible: true
+  },
+  age: {
+    label: 'Age',
+    visible: true
+  },
+  position: {
+    label: 'Position',
+    visible: true
+  },
+  unit: {
+    label: 'Unit',
+    visible: true
+  },
 }
